@@ -57,6 +57,7 @@ p {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;  /* Allow items to wrap onto the next line */
+  margin-bottom: 36px;
 }
 
 .Lang-item{
@@ -66,4 +67,50 @@ p {
   font-weight: 700;
   font-size: 12px;
   border-radius: 4px;
+}
+
+.App-word{
+  display: flex;
+  flex-direction: row;
+
+}
+.word{
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  size: 16px;
+  margin:1px;
+  color:#F9F4DA;
+  width: 40px;
+  background-color: #323232;
+  border-bottom: 1px solid #F9F4DA;
+  margin-bottom: 25px;
+}
+
+.keyboard{
+  display: flex;
+  width: 480px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.key{
+  background-color: #FCBA29;
+  margin: 4px;
+  border: 1px solid #D7D7D7;
+  border-radius: 4px;
+  height: 40px;
+  width: 40px;
+}
+.correct {
+  background-color: green;
+  color: white;
+}
+
+.incorrect {
+  background-color: red;
+  color: white;
 }
