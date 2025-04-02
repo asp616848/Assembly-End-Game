@@ -1,7 +1,19 @@
 .App {
+  display: flex ;
+  flex-direction: column;
   text-align: center;
+  align-items: center ;
+  justify-content: center;  /* Vertically center items */
+  height: 100vh;  /* Take up full height of the viewport */
 }
-
+.App-head{
+  width: 352px;
+  height: 144px;
+  display: flex;
+  flex-direction: column ;
+  align-items: center ;
+  justify-content: center;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -13,26 +25,45 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+p {
+  font-size: 14px;
+  color: #8E8E8E;
+}
+
+.Head-header {
+  color: #F9F4DA !important;
+  font-size: 26px !important;
+  height: 26px !important;
+  justify-content: center !important;
+  font-weight: 500;
+}
+
+.Head-p{
+  width: 100%;
+  height: auto;
+  padding: 6px;
+  background-color: #7A5EA7;
+  color: #F9F4DA;
+  border: 1px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center; /* Center vertically */
+  border-radius: 4px;
+}
+.App-Langs {
+  width: 253px;  /* Set the exact width */
+  height: auto;  /* Adjust height dynamically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;  /* Allow items to wrap onto the next line */
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Lang-item{
+  width: auto;
+  padding: 3px;
+  margin: 1px;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 4px;
 }

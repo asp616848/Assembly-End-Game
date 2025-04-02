@@ -1,24 +1,45 @@
 import logo from './logo.svg';
 import './App.css';
+import { languages } from './langs.js';
 
 function App() {
+  
+  const langs = languages
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <div className="App-head">
+        <header className="Head-header">
+          Assembly: Endgame  
+        </header>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Guess the word in under 8 attempts to keep the
+          <br></br> programming world safe from Assembly!
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        {/* goota add conditional for the button below TODO for color, visibility and text */}
+
+        <div className="Head-p">
+          “Farewell HTML & CSS” 🫡
+        </div>
+
+      </div>
+        
+      <div className="App-Langs">
+        {
+          langs.map((element, index) => (
+            <div 
+              key={index} 
+              className="Lang-item" 
+              style={{ backgroundColor: element.backgroundColor, color: element.color }}
+            >
+              {element.name}
+            </div>
+            )
+          )
+        }
+      </div>
     </div>
+    
   );
 }
 
