@@ -1,8 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import { languages } from './langs.js';
 import React from 'react';
 import {clsx} from 'clsx';
+import { getRandomWord } from './utils.js';
+import Confetti from "react-confetti"
 
 function App() {
   
@@ -41,7 +42,17 @@ function App() {
   }
   
   return (
+
     <div className="App">
+
+      {
+        gameEnd==1 && 
+            <Confetti
+                recycle={false}
+                numberOfPieces={1000}
+            />
+      }
+
       <div className="App-head">
         <header className="Head-header">
           Assembly: Endgame  
@@ -90,8 +101,8 @@ function App() {
 
       <section className='App-word'>
         {currWord.split('').map((el, index) => (
-          <div className='word' key={index}>
-            {guessed.includes(el) &&el.toUpperCase()}
+          <div className='word' key={index} style={{ color: !guessed.includes(el) ? "#EC5D49" : "#F9F4DA" }}>
+            {(guessed.includes(el)||gameEnd==0) && el.toUpperCase()}
           </div>
         ))}
       </section>
@@ -111,7 +122,7 @@ function App() {
         )}
       </div>
 
-      {gameEnd!=2 && <button onClick={()=>{gameEnd=2; setGuess([]); setWord("brrr".toUpperCase())}}className='App-newGame'> New Game</button>}
+      {gameEnd!=2 && <button onClick={()=>{gameEnd=2; setGuess([]); setWord(getRandomWord().toUpperCase())}}className='App-newGame'> New Game</button>}
     </div>
   );
 }
