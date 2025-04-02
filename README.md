@@ -1,5 +1,3 @@
-# Assembly-End-Game
-
 ## Word Guess, but for Programmers! 🚀
 
 [**Play Now!**](https://assembly-end-game-eta.vercel.app/)
