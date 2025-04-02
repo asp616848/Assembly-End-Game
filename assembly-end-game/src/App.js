@@ -23,11 +23,23 @@ function App() {
 
   const alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase()
   console.log(guessed)
-
+  const [lastWrong, setLastWrong] = React.useState("");
   function keyClicked(key){
     setGuess(prev => prev.includes(key)? [...prev] : [...prev, key])
+    if(!currWord.includes(key)){
+      setLastWrong(key);
+    }else{
+      setLastWrong("");
+    }
   }
-
+  let gameEnd = 2;
+  if ( wrongCnt >= 8) {
+    gameEnd = 0;
+  }
+  if(currWord.split("").every(letter => guessed.includes(letter))){
+    gameEnd = 1;
+  }
+  
   return (
     <div className="App">
       <div className="App-head">
@@ -39,9 +51,25 @@ function App() {
           <br></br> programming world safe from Assembly!
         </p>
 
-        <div className="Head-p">
-          “Farewell HTML & CSS” 🫡
-        </div>
+        {((lastWrong!="" && gameEnd!=0) &&wrongCnt>=1) && 
+          <div className="Head-p">
+            “Farewell {langs[wrongCnt-1].name}” 🫡“
+          </div>
+        }
+
+        {
+        gameEnd==0 && <section className="game-status lost">
+          <h2>You Lose!</h2>
+          <p>Learn assembly and come back! 🎉</p>
+        </section>
+        }
+        {
+        gameEnd==1 && 
+        <section className="game-status won">
+          <h2>You win!</h2>
+          <p>Well done! 🎉</p>
+        </section>
+        }
 
       </div>
         
@@ -50,7 +78,7 @@ function App() {
           langs.map((element, index) => (
             <div 
               key={index} 
-              className="Lang-item" 
+              className={clsx("Lang-item", { "kill": index < wrongCnt })} 
               style={{ backgroundColor: element.backgroundColor, color: element.color }}
             >
               {element.name}
@@ -73,16 +101,17 @@ function App() {
         alphabet.split("").map((key, ind)=>
           <button 
             key={ind} 
-            onClick={()=>keyClicked(key.toUpperCase())} 
+            onClick={()=> gameEnd==2 && keyClicked(key.toUpperCase())} 
             className={clsx("key", {
               "correct": guessed.includes(key) && currWord.includes(key),   // Green if guessed and correct
               "incorrect": (guessed.includes(key)) && !currWord.includes(key) // Red if guessed but incorrect
             })} >
-
             {key.toUpperCase()}
           </button>
-        )}        
+        )}
       </div>
+
+      {gameEnd!=2 && <button onClick={()=>{gameEnd=2; setGuess([]); setWord("brrr".toUpperCase())}}className='App-newGame'> New Game</button>}
     </div>
   );
 }

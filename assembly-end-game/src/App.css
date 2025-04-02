@@ -4,7 +4,7 @@
   text-align: center;
   align-items: center ;
   justify-content: center;  /* Vertically center items */
-  height: 100vh;  /* Take up full height of the viewport */
+  min-height: 100;
 }
 .App-head{
   width: 352px;
@@ -51,6 +51,7 @@ p {
   border-radius: 4px;
 }
 .App-Langs {
+  margin-top: 30px;
   width: 253px;  /* Set the exact width */
   height: auto;  /* Adjust height dynamically */
   display: flex;
@@ -61,13 +62,33 @@ p {
 }
 
 .Lang-item{
-  width: auto;
   padding: 3px;
   margin: 1px;
   font-weight: 700;
   font-size: 12px;
   border-radius: 4px;
 }
+.kill::before {
+  content: "💀";
+  border-radius: 4px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 0.85rem;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.kill {
+  opacity: 0.5; /* Example effect */
+  filter: grayscale(100%);
+  transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+
 
 .App-word{
   display: flex;
@@ -95,6 +116,7 @@ p {
   width: 480px;
   justify-content: center;
   align-items: center;
+  margin-bottom: 25px;
   flex-wrap: wrap;
 }
 .key{
@@ -106,11 +128,50 @@ p {
   width: 40px;
 }
 .correct {
-  background-color: green;
+  background-color: #10A95B;
   color: white;
 }
 
 .incorrect {
-  background-color: red;
+  background-color: #EC5D49;
   color: white;
+}
+.App-newGame {
+  background-color: #11B5E5;
+  border: 1px solid #D7D7D7;
+  border-radius: 4px;
+  width: 225px;
+  height: 40px;
+  padding: 6px 12px;
+  display: block;
+  margin-inline: auto;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+.game-status {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #F9F4DA;
+  min-height: 60px;
+  border-radius: 4px;
+}
+section.game-status > p {
+  margin: 5px;
+  color: #F9F4DA;
+}
+
+section.game-status > h2 {
+  font-size: 1.25rem;
+  margin: 5px;
+  color :#F9F4DA
+}
+section.game-status.won {
+  margin: 5px;
+  background-color: #10A95B;
+}
+section.game-status.lost {
+  margin: 5px;
+  background-color: #EC5D49;
 }
