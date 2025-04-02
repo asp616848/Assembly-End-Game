@@ -1,6 +1,0 @@
-
-Todo
-Remaining Guesses,
-Timer,
-Deploy,
-Some bad effect when lost
